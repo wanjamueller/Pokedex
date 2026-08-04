@@ -1,7 +1,7 @@
-function libraryTemplate(i) {
-    return /*html*/ `
-        <div class="library-cards">
-            <h3>Name: ${myPokemons[i].name}</h3>
-        </div>
-    `;
-}
+// function libraryTemplate(pkm) {
+//     return /*html*/ `
+//         <div class="library-cards">
+//             <h3>Name: ${pkm.name}</h3>
+//         </div>
+//     `;
+// }
