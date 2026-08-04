@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.library-wrapper {
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 50px;
+    justify-content: center;
+
+    .library-cards {
+        width: 100%;
+        background-color: blue;
+        color: aliceblue;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+}

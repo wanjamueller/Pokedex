@@ -7,7 +7,16 @@
 
         <link rel="stylesheet" href="style.css" />
 
+        <script defer src="./scripts/testdb.js"></script>
+        <script defer src="./scripts/template.js"></script>
         <script defer src="script.js"></script>
     </head>
-    <body></body>
+    <body onload="renderPokemons()">
+        <header></header>
+        <main data-id="content">
+            <section id="library-wrapper" class="library-wrapper"></section>
+        </main>
+        <dialog data-id="dialog"></dialog>
+        <footer></footer>
+    </body>
 </html>
