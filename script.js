@@ -39,6 +39,15 @@ async function loadAllDetails() {
     // renderPokemons(MY_PKMS);
 }
 
+async function getMorePkm() {
+    const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${MY_PKMS.length}`);
+    const PkmsFromJSON = await Pkms.json();
+    for (let i = 0; i < PkmsFromJSON.results.length; i++) {
+        MY_PKMS.push(PkmsFromJSON.results[i]);
+    }
+    await loadAllDetails();
+}
+
 // #endregion get API Data
 
 // #region Render Pokemons
