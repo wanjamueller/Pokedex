@@ -2,7 +2,7 @@ function libraryTemplate(pkm) {
     return /*html*/ `
         <div class="library-cards">
             <h3>${pkm.name}</h3>
-            <img class="default-image" src="${pkm.img}" alt="">
+            <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
             <p>Height: ${pkm.height} m</p>
             <p>Weight: ${pkm.weight} Kg</p>
             <p>${pkm.types[0].type.name}</p>
@@ -12,10 +12,4 @@ function libraryTemplate(pkm) {
             <p>Health: ${pkm.hp} Pts</p>
         </div>
     `;
-}
-
-function moreCardsTemplate() {
-    return /*html*/ `
-        <button onclick="getMorePkm()">Load further cards</button>
-`;
 }
