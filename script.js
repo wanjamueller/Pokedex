@@ -24,14 +24,15 @@ async function getPkmDetails(pkm) {
     const details = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkm.name}`);
     const pkmDetails = await details.json();
     pkm.id = pkmDetails.id;
+    pkm.img = pkmDetails.sprites.other["official-artwork"].front_default;
+    pkm.types = pkmDetails.types;
+    // pkm.displayname = pkmDetails.name.charAt(0).toUpperCase() + pkmDetails.name.slice(1);
+    // want / need to shorten by just pulling stats? and then finetuning in template?
     pkm.height = pkmDetails.height / 10;
     pkm.weight = pkmDetails.weight / 10;
-    pkm.types = pkmDetails.types;
-    // want / need to shorten by just pulling stats? and then finetuning in template?
     pkm.att = pkmDetails.stats[1].base_stat;
     pkm.def = pkmDetails.stats[2].base_stat;
     pkm.hp = pkmDetails.stats[0].base_stat;
-    pkm.img = pkmDetails.sprites.other["official-artwork"].front_default;
     pkm.shiny = pkmDetails.sprites.other["official-artwork"].front_shiny;
 }
 

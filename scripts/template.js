@@ -1,7 +1,7 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
         <button class="library-cards" onclick="openPkm(${pkm.id})">
-            <h3>${pkm.name}</h3>
+            <h3>${pkm.displayname}</h3>
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
             <p>${pkm.types[0].type.name}</p>
             ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}

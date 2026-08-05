@@ -7,6 +7,14 @@
 }
 
 body {
+    h3 {
+        text-transform: capitalize;
+    }
+
+    p {
+        text-transform: capitalize;
+    }
+
     button {
         cursor: pointer;
     }
