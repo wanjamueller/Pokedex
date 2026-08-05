@@ -13,3 +13,23 @@ function libraryTemplate(pkm) {
         </div>
     `;
 }
+
+function loadMoreBtnTemplate() {
+    return /*html*/ `
+        <button data-id="load-more-button" id="load-more-button" class="" onclick="getMorePkm()">
+        Load further cards
+        </button>
+    `;
+}
+
+function searchBtnTemplate() {
+    return /*html*/ `
+        <button data-id="search-button" id="search-button" onclick="searchPkm()">SEARCH</button>
+    `;
+}
+
+function returnBtnTemplate() {
+    return /*html*/ `
+        <button data-id="search-button" id="search-button" onclick="getPkm()">Return to Library</button>
+    `;
+}

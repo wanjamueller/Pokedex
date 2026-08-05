@@ -1,7 +1,10 @@
 const LIBRARY_REF = document.getElementById("library-wrapper");
 const CARD_LOADER = document.getElementById("card-loader");
+
 const SEARCH_REF = document.getElementById("search");
 const SEARCH_INPUT = document.getElementById("search-input");
+const SEARCH_BTN = document.getElementById("search-button");
+const SEARCH_CONT_REF = document.getElementById("search-button-container");
 const MY_PKMS = [];
 
 // #region get API Data
@@ -13,6 +16,8 @@ async function getPkm() {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
     await loadAllDetails();
+    const loadBtn = document.getElementById("load-more-button");
+    loadBtn.classList.remove("d_none");
 }
 
 async function getPkmDetails(pkm) {
@@ -48,6 +53,10 @@ async function getMorePkm() {
     await loadAllDetails();
 }
 
+function renderMoreBtn() {
+    CARD_LOADER.innerHTML = loadMoreBtnTemplate();
+}
+
 // #endregion get API Data
 
 // #region Render Pokemons
@@ -58,14 +67,13 @@ function renderPokemons(pokemons) {
         const pkm = pokemons[index];
         LIBRARY_REF.innerHTML += libraryTemplate(pkm);
     }
+    renderSearchBtn();
 }
 
-function renderMoreCardsBtn() {
-    CARD_LOADER.innerHTML = moreCardsTemplate();
-}
+// #region search functionality
 
-function renderSearch() {
-    SEARCH_REF.innerHTML = searchTemplate();
+function renderSearchBtn() {
+    SEARCH_CONT_REF.innerHTML = searchBtnTemplate();
 }
 
 function searchPkm() {
@@ -78,12 +86,22 @@ function searchPkm() {
         const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
         renderPokemons(results);
         console.log(results);
+        SEARCH_MSSG.innerText = "";
     }
-    // ...search happens here
+    const loadBtn = document.getElementById("load-more-button");
+    loadBtn.classList.add("d_none");
+    toggleSearchButton();
 }
+
+function toggleSearchButton() {
+    SEARCH_CONT_REF.innerHTML = returnBtnTemplate();
+}
+
+// #endregion search functionality
 
 // #endregion Render Pokemons
 
 function init() {
     getPkm();
+    renderMoreBtn();
 }
