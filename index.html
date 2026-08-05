@@ -5,15 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pokedex</title>
 
+        <link rel="shortcut icon" href="./assets/icons/pokedex.png" type="image/x-icon" />
+
+        <link rel="stylesheet" href="./styles/standard.css" />
         <link rel="stylesheet" href="style.css" />
 
         <script defer src="./scripts/template.js"></script>
         <script defer src="script.js"></script>
     </head>
-    <body>
+    <body onload="init()">
         <header></header>
         <main data-id="content">
             <section id="library-wrapper" class="library-wrapper"></section>
+            <section id="card-loader" class="card-loader"></section>
         </main>
         <dialog data-id="dialog"></dialog>
         <footer></footer>
