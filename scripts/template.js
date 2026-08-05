@@ -16,6 +16,6 @@ function libraryTemplate(pkm) {
 
 function moreCardsTemplate() {
     return /*html*/ `
-        <button>Load further cards</button>
+        <button onclick="getMorePkm()">Load further cards</button>
 `;
 }
