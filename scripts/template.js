@@ -1,16 +1,11 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
-        <div class="library-cards">
+        <button class="library-cards" onclick="openPkm(${pkm.id})">
             <h3>${pkm.name}</h3>
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
-            <p>Height: ${pkm.height} m</p>
-            <p>Weight: ${pkm.weight} Kg</p>
             <p>${pkm.types[0].type.name}</p>
             ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}
-            <p>Attack: ${pkm.att} Pts</p>
-            <p>Defense: ${pkm.def} Pts</p>
-            <p>Health: ${pkm.hp} Pts</p>
-        </div>
+        </button>
     `;
 }
 
@@ -30,6 +25,23 @@ function searchBtnTemplate() {
 
 function returnBtnTemplate() {
     return /*html*/ `
-        <button data-id="search-button" id="search-button" onclick="getPkm()">Return to Library</button>
+        <button data-id="search-button" id="search-button" onclick="returnToLibrary()">Return to Library</button>
+    `;
+}
+
+function dialogTemplate(pkm) {
+    return /*html*/ `
+        <div class="focus-card">
+            <button onclick="closeDialog()">X</button>
+            <h3>${pkm.name}</h3>
+            <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
+            <p>Height: ${pkm.height} m</p>
+            <p>Weight: ${pkm.weight} Kg</p>
+            <p>${pkm.types[0].type.name}</p>
+            ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}
+            <p>Attack: ${pkm.att} Pts</p>
+            <p>Defense: ${pkm.def} Pts</p>
+            <p>Health: ${pkm.hp} Pts</p>
+        </div>
     `;
 }
