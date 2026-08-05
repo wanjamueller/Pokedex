@@ -1,16 +1,16 @@
 const LIBRARY_REF = document.getElementById("library-wrapper");
 const CARD_LOADER = document.getElementById("card-loader");
-
 const SEARCH_REF = document.getElementById("search");
 const SEARCH_INPUT = document.getElementById("search-input");
 const SEARCH_BTN = document.getElementById("search-button");
 const SEARCH_CONT_REF = document.getElementById("search-button-container");
+const DIALOG_REF = document.getElementById("dialog");
 const MY_PKMS = [];
 
 // #region get API Data
 
 async function getPkm() {
-    const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`);
+    const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=40&offset=0`);
     const PkmsFromJSON = await Pkms.json();
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
         MY_PKMS.push(PkmsFromJSON.results[i]);
@@ -45,7 +45,7 @@ async function loadAllDetails() {
 }
 
 async function getMorePkm() {
-    const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${MY_PKMS.length}`);
+    const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${MY_PKMS.length}`);
     const PkmsFromJSON = await Pkms.json();
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
         MY_PKMS.push(PkmsFromJSON.results[i]);
@@ -97,7 +97,34 @@ function toggleSearchButton() {
     SEARCH_CONT_REF.innerHTML = returnBtnTemplate();
 }
 
+function returnToLibrary() {
+    SEARCH_INPUT.value = "";
+    renderPokemons(MY_PKMS);
+    document.getElementById("load-more-button").classList.remove("d_none");
+}
+
 // #endregion search functionality
+
+// #region dialog
+
+function openPkm(id) {
+    const pkm = MY_PKMS.find((p) => p.id === id);
+    showModal(pkm);
+    DIALOG_REF.classList.add("open");
+    DIALOG_REF.showModal();
+}
+
+function showModal(pkm) {
+    DIALOG_REF.innerHTML = "";
+    DIALOG_REF.innerHTML = dialogTemplate(pkm);
+}
+
+function closeDialog() {
+    DIALOG_REF.close();
+    DIALOG_REF.classList.remove("open");
+}
+
+// #endregion dialog
 
 // #endregion Render Pokemons
 
