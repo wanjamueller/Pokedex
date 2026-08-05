@@ -123,6 +123,19 @@ function showModal(pkm) {
 function closeDialog() {
     DIALOG_REF.close();
     DIALOG_REF.classList.remove("open");
+    renderPokemons(MY_PKMS);
+}
+
+function nextPkm(id) {
+    const pkm = MY_PKMS.find((p) => p.id === id + 1);
+    if (pkm.id == MY_PKMS.length + 1) pkm.id = 1;
+    return showModal(pkm);
+}
+
+function prevPkm(id) {
+    const pkm = MY_PKMS.find((p) => p.id === id - 1);
+    if (pkm.id === 1) pkm.id = MY_PKMS.length + 1;
+    return showModal(pkm);
 }
 
 // #endregion dialog
