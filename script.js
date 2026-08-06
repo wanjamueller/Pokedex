@@ -95,13 +95,19 @@ function searchPkm() {
         return;
     } else {
         const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
-        renderPokemons(results);
-        console.log(results);
-        SEARCH_MSSG.innerText = "";
+        if (results.length === 0) {
+            SEARCH_MSSG.innerText = `no pokemon found for "${query}"`;
+            return;
+        } else {
+            const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
+            renderPokemons(results);
+            console.log(results);
+            SEARCH_MSSG.innerText = "";
+        }
+        const loadBtn = document.getElementById("load-more-button");
+        loadBtn.classList.add("d_none");
+        toggleSearchButton();
     }
-    const loadBtn = document.getElementById("load-more-button");
-    loadBtn.classList.add("d_none");
-    toggleSearchButton();
 }
 
 function toggleSearchButton() {

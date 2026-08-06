@@ -1,6 +1,6 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
-        <button class="library-cards" onclick="openPkm(${pkm.id})">
+        <button data-id="card" class="library-cards" onclick="openPkm(${pkm.id})">
             <h2>${pkm.id}</h2>    
             <h3>${pkm.name}</h3>
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
@@ -32,10 +32,10 @@ function returnBtnTemplate() {
 
 function dialogTemplate(pkm) {
     return /*html*/ `
-        <div class="focus-card">
-            <button onclick="closeDialog()">X</button>
+        <div data-id="overlay-pokemon-name" class="focus-card">
+            <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
             <h3>${pkm.name}</h3>
-            <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
+            <img data-id="dialog-image" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
             <p>Height: ${pkm.height} m</p>
             <p>Weight: ${pkm.weight} Kg</p>
             <p>${pkm.types[0].type.name}</p>
@@ -43,8 +43,8 @@ function dialogTemplate(pkm) {
             <p>Attack: ${pkm.att} Pts</p>
             <p>Defense: ${pkm.def} Pts</p>
             <p>Health: ${pkm.hp} Pts</p>
-            <button onclick="nextPkm(${pkm.id})">Next</button>
-            <button onclick="prevPkm(${pkm.id})">Previous</button>
+            <button data-id="next-button" onclick="nextPkm(${pkm.id})">Next</button>
+            <button data-id="prev-button" onclick="prevPkm(${pkm.id})">Previous</button>
         </div>
     `;
 }
