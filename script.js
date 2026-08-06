@@ -15,7 +15,7 @@ async function getPkm() {
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
-    await loadAllDetails();
+    await loadDetails();
     const loadBtn = document.getElementById("load-more-button");
     loadBtn.classList.remove("d_none");
 }
@@ -27,22 +27,19 @@ async function getPkmDetails(pkm) {
     pkm.img = pkmDetails.sprites.other["official-artwork"].front_default;
     pkm.types = pkmDetails.types;
     // pkm.displayname = pkmDetails.name.charAt(0).toUpperCase() + pkmDetails.name.slice(1);
-    // want / need to shorten by just pulling stats? and then finetuning in template?
-    pkm.height = pkmDetails.height / 10;
-    pkm.weight = pkmDetails.weight / 10;
-    pkm.att = pkmDetails.stats[1].base_stat;
-    pkm.def = pkmDetails.stats[2].base_stat;
-    pkm.hp = pkmDetails.stats[0].base_stat;
     pkm.shiny = pkmDetails.sprites.other["official-artwork"].front_shiny;
 }
 
-async function loadAllDetails() {
+async function loadDetails() {
     for (const pkm of MY_PKMS) {
         await getPkmDetails(pkm);
     }
-    console.log(MY_PKMS);
+    // console.log(MY_PKMS);
     renderPokemons(MY_PKMS);
-    // renderPokemons(MY_PKMS);
+}
+
+function renderMoreBtn() {
+    CARD_LOADER.innerHTML = loadMoreBtnTemplate();
 }
 
 async function getMorePkm() {
@@ -51,11 +48,24 @@ async function getMorePkm() {
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
-    await loadAllDetails();
+    await loadDetails();
 }
 
-function renderMoreBtn() {
-    CARD_LOADER.innerHTML = loadMoreBtnTemplate();
+async function addPkmDetails(pkm) {
+    const details = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkm.name}`);
+    const pkmDetails = await details.json();
+    pkm.height = pkmDetails.height / 10;
+    pkm.weight = pkmDetails.weight / 10;
+    pkm.att = pkmDetails.stats[1].base_stat;
+    pkm.def = pkmDetails.stats[2].base_stat;
+    pkm.hp = pkmDetails.stats[0].base_stat;
+}
+
+async function loadAddDetails() {
+    for (const pkm of MY_PKMS) {
+        await addPkmDetails(pkm);
+    }
+    console.log(MY_PKMS);
 }
 
 // #endregion get API Data
@@ -108,8 +118,9 @@ function returnToLibrary() {
 
 // #region dialog
 
-function openPkm(id) {
+async function openPkm(id) {
     const pkm = MY_PKMS.find((p) => p.id === id);
+    await loadAddDetails();
     showModal(pkm);
     DIALOG_REF.classList.add("open");
     DIALOG_REF.showModal();
