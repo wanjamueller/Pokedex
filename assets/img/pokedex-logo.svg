@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="26" viewBox="0 0 115 26" role="img" aria-label="Pokédex">
+  <title>Pokédex logo</title>
+  <circle cx="13" cy="13" r="11" fill="#d33a3c" stroke="#1c1f27" stroke-width="4"></circle>
+  <text x="38" y="20.6" font-family="Outfit, &#39;Trebuchet MS&#39;, system-ui, sans-serif" font-weight="700" font-size="20" letter-spacing="-0.2" fill="#1c1f27">Pokédex</text>
+</svg>

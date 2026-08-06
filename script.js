@@ -1,10 +1,11 @@
 const LIBRARY_REF = document.getElementById("library-wrapper");
-const CARD_LOADER = document.getElementById("card-loader");
 const SEARCH_REF = document.getElementById("search");
 const SEARCH_INPUT = document.getElementById("search-input");
 const SEARCH_BTN = document.getElementById("search-button");
 const SEARCH_CONT_REF = document.getElementById("search-button-container");
+const SEARCH_MSSG = document.getElementById("search-message");
 const DIALOG_REF = document.getElementById("dialog");
+const LOAD_BTN_REF = document.getElementById("load-more-button");
 const MY_PKMS = [];
 
 // #region get API Data
@@ -16,8 +17,7 @@ async function getPkm() {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
     await loadDetails();
-    const loadBtn = document.getElementById("load-more-button");
-    loadBtn.classList.remove("d_none");
+    LOAD_BTN_REF.classList.remove("d_none");
 }
 
 async function getPkmDetails(pkm) {
@@ -26,7 +26,6 @@ async function getPkmDetails(pkm) {
     pkm.id = pkmDetails.id;
     pkm.img = pkmDetails.sprites.other["official-artwork"].front_default;
     pkm.types = pkmDetails.types;
-    // pkm.displayname = pkmDetails.name.charAt(0).toUpperCase() + pkmDetails.name.slice(1);
     pkm.shiny = pkmDetails.sprites.other["official-artwork"].front_shiny;
 }
 
@@ -34,12 +33,7 @@ async function loadDetails() {
     for (const pkm of MY_PKMS) {
         await getPkmDetails(pkm);
     }
-    // console.log(MY_PKMS);
     renderPokemons(MY_PKMS);
-}
-
-function renderMoreBtn() {
-    CARD_LOADER.innerHTML = loadMoreBtnTemplate();
 }
 
 async function getMorePkm() {
@@ -88,24 +82,22 @@ function renderSearchBtn() {
 }
 
 function searchPkm() {
-    const SEARCH_MSSG = document.getElementById("search-message");
     const query = SEARCH_INPUT.value.trim().toLowerCase();
+    const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
+    searchFlow(results, query);
+}
+
+function searchFlow(results, query) {
     if (query.length < 3) {
         SEARCH_MSSG.innerText = "minimum 3 letter necessary";
-        return;
     } else {
-        const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
         if (results.length === 0) {
             SEARCH_MSSG.innerText = `no pokemon found for "${query}"`;
-            return;
         } else {
-            const results = MY_PKMS.filter((pkm) => pkm.name.includes(query));
             renderPokemons(results);
-            console.log(results);
             SEARCH_MSSG.innerText = "";
         }
-        const loadBtn = document.getElementById("load-more-button");
-        loadBtn.classList.add("d_none");
+        LOAD_BTN_REF.classList.add("d_none");
         toggleSearchButton();
     }
 }
@@ -116,6 +108,7 @@ function toggleSearchButton() {
 
 function returnToLibrary() {
     SEARCH_INPUT.value = "";
+    SEARCH_MSSG.innerText = "";
     renderPokemons(MY_PKMS);
     document.getElementById("load-more-button").classList.remove("d_none");
 }
@@ -161,5 +154,4 @@ function prevPkm(id) {
 
 function init() {
     getPkm();
-    renderMoreBtn();
 }

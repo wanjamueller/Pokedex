@@ -1,32 +1,26 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
-        <button data-id="card" class="library-cards" onclick="openPkm(${pkm.id})">
+        <div class="library-cards">
+            <button data-id="card" onclick="openPkm(${pkm.id})">
             <h2>${pkm.id}</h2>    
             <h3>${pkm.name}</h3>
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
             <p>${pkm.types[0].type.name}</p>
             ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}
-        </button>
-    `;
-}
-
-function loadMoreBtnTemplate() {
-    return /*html*/ `
-        <button data-id="load-more-button" id="load-more-button" class="" onclick="getMorePkm()">
-        Load further cards
-        </button>
+            </button>
+        </div>
     `;
 }
 
 function searchBtnTemplate() {
     return /*html*/ `
-        <button data-id="search-button" id="search-button" onclick="searchPkm()">SEARCH</button>
+        <button data-id="search-button" id="search-button" class="search-button" onclick="searchPkm()">Search</button>
     `;
 }
 
 function returnBtnTemplate() {
     return /*html*/ `
-        <button data-id="search-button" id="search-button" onclick="returnToLibrary()">Return to Library</button>
+        <button data-id="search-button" id="search-button" class="search-button" onclick="returnToLibrary()">Back</button>
     `;
 }
 

@@ -1,0 +1,60 @@
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: white;
+    border-bottom: 1px solid rgb(223, 219, 212);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 260px;
+            padding: 9px 14px;
+            border-radius: 10px;
+            background: rgb(245, 243, 239);
+            border: 1px solid rgb(223, 219, 212);
+
+            .field-icon {
+                width: 13px;
+                height: 13px;
+                flex: none;
+                border: 2px solid rgb(150, 154, 165);
+                border-radius: 50%;
+            }
+
+            input {
+                border: none;
+                background: none;
+                outline: none;
+                font-family: "Outfit";
+                font-size: 14px;
+                color: rgb(28, 31, 39);
+                width: 100%;
+            }
+            .search-input::placeholder {
+                color: rgb(150, 154, 165);
+            }
+
+            .search-button {
+                border-radius: 10px;
+                background: rgb(245, 243, 239);
+                border: 1px solid rgb(223, 219, 212);
+                padding: 3px 6px;
+                font-family: "Outfit";
+                font-size: 14px;
+                color: rgb(28, 31, 39);
+            }
+        }
+    }
+}

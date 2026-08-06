@@ -5,25 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pokedex</title>
 
-        <link rel="shortcut icon" href="./assets/icons/pokedex.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="./assets/icons/pokedex-mark.svg" type="image/x-icon" />
 
         <link rel="stylesheet" href="./styles/standard.css" />
+        <link rel="stylesheet" href="./styles/fonts.css" />
+        <link rel="stylesheet" href="./styles/variables.css" />
+        <link rel="stylesheet" href="./styles/header.css" />
         <link rel="stylesheet" href="style.css" />
 
         <script defer src="./scripts/template.js"></script>
         <script defer src="script.js"></script>
     </head>
     <body onload="init()">
-        <header>
+        <header class="site-header">
+            <a href="#"><img src="./assets/img/pokedex-logo.svg" alt="pokedex-logo" /></a>
             <section id="search" class="search">
-                <input data-id="search-input" id="search-input" type="text" />
-                <div id="search-button-container"></div>
+                <label for="search-input" class="field">
+                    <span class="field-icon"></span>
+                    <input data-id="search-input" id="search-input" type="text" placeholder="Search by name" />
+                    <div id="search-button-container"></div>
+                </label>
+
                 <p data-id="not-found" id="search-message"></p>
             </section>
         </header>
         <main data-id="content">
             <section id="library-wrapper" class="library-wrapper"></section>
-            <section id="card-loader" class="card-loader"></section>
+            <section id="card-loader" class="card-loader">
+                <button data-id="load-more-button" id="load-more-button" class="" onclick="getMorePkm()">
+                    Load further cards
+                </button>
+            </section>
         </main>
         <dialog data-id="dialog" id="dialog"></dialog>
         <footer></footer>
