@@ -1,5 +1,7 @@
 main {
-    background-color: aqua;
+    padding: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
 
     .library-wrapper {
         display: flex;
