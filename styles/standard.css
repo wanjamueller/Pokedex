@@ -7,6 +7,20 @@
 }
 
 body {
+    background: rgb(248, 245, 241);
+    font-family: "DM Sans";
+    color: rgb(28, 31, 39);
+    -webkit-font-smoothing: antialiased;
+
+    a {
+        color: rgb(211, 58, 60);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgb(189, 44, 46);
+    }
+
     h3 {
         text-transform: capitalize;
     }

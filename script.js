@@ -90,6 +90,7 @@ function searchPkm() {
 function searchFlow(results, query) {
     if (query.length < 3) {
         SEARCH_MSSG.innerText = "minimum 3 letter necessary";
+        setTimeout(() => (SEARCH_MSSG.innerText = ""), 3000);
     } else {
         if (results.length === 0) {
             SEARCH_MSSG.innerText = `no pokemon found for "${query}"`;
