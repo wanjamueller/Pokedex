@@ -73,6 +73,13 @@ function renderPokemons(pokemons) {
         LIBRARY_REF.innerHTML += libraryTemplate(pkm);
     }
     renderSearchBtn();
+    setCardBackground();
+}
+
+function setCardBackground() {
+    const libCardRef = document.getElementById(`library-cards-${pkm.id}`);
+    const typeColor = MY_PKM.types[0].type.name;
+    libCardRef.classList.add(typeColor);
 }
 
 // #region search functionality
