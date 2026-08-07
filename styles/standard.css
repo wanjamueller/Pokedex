@@ -21,11 +21,18 @@ body {
         color: rgb(189, 44, 46);
     }
 
+    h2 {
+        color: white;
+    }
+
     h3 {
         text-transform: capitalize;
+        color: white;
     }
 
     p {
+        font-family: "DM Sans";
+        color: white;
         text-transform: capitalize;
     }
 
@@ -35,6 +42,18 @@ body {
 
     .d_none {
         display: none;
+    }
+
+    .types-wrapper {
+        display: flex;
+        gap: 20px;
+
+        .type {
+            border: 1px solid white;
+            width: fit-content;
+            padding: 10px;
+            border-radius: 20px;
+        }
     }
 }
 
@@ -115,77 +134,170 @@ body {
 /* #rendegion card colors */
 
 /* #region card hover colors */
+.library-wrapper {
+    .grass:hover {
+        background-color: var(--grass-light);
+    }
 
-.grass:hover {
-    background-color: var(--grass-light);
-}
+    .fire:hover {
+        background-color: var(--fire-light);
+    }
 
-.fire:hover {
-    background-color: var(--fire-light);
-}
+    .water:hover {
+        background-color: var(--water-light);
+    }
 
-.water:hover {
-    background-color: var(--water-light);
-}
+    .bug:hover {
+        background-color: var(--bug-light);
+    }
 
-.bug:hover {
-    background-color: var(--bug-light);
-}
+    .normal:hover {
+        background-color: var(--normal-light);
+    }
 
-.normal:hover {
-    background-color: var(--normal-light);
-}
+    .poison:hover {
+        background-color: var(--poison-light);
+    }
 
-.poison:hover {
-    background-color: var(--poison-light);
-}
+    .electric:hover {
+        background-color: var(--electric-light);
+    }
 
-.electric:hover {
-    background-color: var(--electric-light);
-}
+    .ground:hover {
+        background-color: var(--ground-light);
+    }
 
-.ground:hover {
-    background-color: var(--ground-light);
-}
+    .fairy:hover {
+        background-color: var(--fairy-light);
+    }
 
-.fairy:hover {
-    background-color: var(--fairy-light);
-}
+    .flying:hover {
+        background-color: var(--flying-light);
+    }
 
-.flying:hover {
-    background-color: var(--flying-light);
-}
+    .steel:hover {
+        background-color: var(--steel-light);
+    }
 
-.steel:hover {
-    background-color: var(--steel-light);
-}
+    .dark:hover {
+        background-color: var(--dark-light);
+    }
 
-.dark:hover {
-    background-color: var(--dark-light);
-}
+    .dragon:hover {
+        background-color: var(--dragon-light);
+    }
 
-.dragon:hover {
-    background-color: var(--dragon-light);
-}
+    .ghost:hover {
+        background-color: var(--ghost-light);
+    }
 
-.ghost:hover {
-    background-color: var(--ghost-light);
-}
+    .rock:hover {
+        background-color: var(--rock-light);
+    }
 
-.rock:hover {
-    background-color: var(--rock-light);
-}
+    .psychic:hover {
+        background-color: var(--psychic-light);
+    }
 
-.psychic:hover {
-    background-color: var(--psychic-light);
-}
+    .fighting:hover {
+        background-color: var(--fighting-light);
+    }
 
-.fighting:hover {
-    background-color: var(--fighting-light);
-}
-
-.ice:hover {
-    background-color: var(--ice-light);
+    .ice:hover {
+        background-color: var(--ice-light);
+    }
 }
 
 /* #region card hover colors */
+
+.dialog-img-wrapper {
+    .grass {
+        border: 5px solid var(--grass-light);
+        border-radius: 50%;
+    }
+
+    .fire {
+        border: 5px solid var(--fire-light);
+        border-radius: 50%;
+    }
+
+    .water {
+        border: 5px solid var(--water-light);
+        border-radius: 50%;
+    }
+
+    .bug {
+        border: 5px solid var(--bug-light);
+        border-radius: 50%;
+    }
+
+    .normal {
+        border: 5px solid var(--normal-light);
+        border-radius: 50%;
+    }
+
+    .poison {
+        border: 5px solid var(--poison-light);
+        border-radius: 50%;
+    }
+
+    .electric {
+        border: 5px solid var(--electric-light);
+        border-radius: 50%;
+    }
+
+    .ground {
+        border: 5px solid var(--ground-light);
+        border-radius: 50%;
+    }
+
+    .fairy {
+        border: 5px solid var(--fairy-light);
+        border-radius: 50%;
+    }
+
+    .flying {
+        border: 5px solid var(--flying-light);
+        border-radius: 50%;
+    }
+
+    .steel {
+        border: 5px solid var(--steel-light);
+        border-radius: 50%;
+    }
+
+    .dark {
+        border: 5px solid var(--dark-light);
+        border-radius: 50%;
+    }
+
+    .dragon {
+        border: 5px solid var(--dragon-light);
+        border-radius: 50%;
+    }
+
+    .ghost {
+        border: 5px solid var(--ghost-light);
+        border-radius: 50%;
+    }
+
+    .rock {
+        border: 5px solid var(--rock-light);
+        border-radius: 50%;
+    }
+
+    .psychic {
+        border: 5px solid var(--psychic-light);
+        border-radius: 50%;
+    }
+
+    .fighting {
+        border: 5px solid var(--fighting-light);
+        border-radius: 50%;
+    }
+
+    .ice {
+        border: 5px solid var(--ice-light);
+        border-radius: 50%;
+    }
+}

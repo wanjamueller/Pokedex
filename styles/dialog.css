@@ -1,0 +1,123 @@
+.dialog {
+    margin: auto;
+    width: 600px;
+    border: none;
+    border-radius: 20px;
+
+    .dialog-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+        .dialog-img-text {
+            display: flex;
+
+            .dialog-img-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    height: 200px;
+                }
+            }
+
+            .dialog-text-wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding: 10px;
+
+                h2 {
+                    font-family: "DM Mono";
+                    font-size: 1rem;
+                    /* color: rgba(255, 255, 255, 0.72); */
+                }
+
+                h3 {
+                    font-family: "Outfit";
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                }
+
+                /* .types-wrapper {
+                display: flex;
+                gap: 20px;
+
+                .type {
+                    border: 1px solid white;
+                    width: fit-content;
+                    padding: 10px;
+                    border-radius: 20px;
+                }
+            } */
+            }
+
+            .dialog-close-wrapper {
+                display: flex;
+                align-items: start;
+            }
+        }
+    }
+    .dialog-content {
+        background: var(--canvas);
+
+        .dialog-hw {
+            width: 100%;
+            justify-content: space-evenly;
+            display: flex;
+            padding: 10px;
+
+            .dialog-bubble {
+                width: 30%;
+                background-color: rgb(223, 219, 212);
+                border-radius: 10px;
+                padding: 10px 15px;
+            }
+
+            .hw-title {
+                color: var(--ink-muted);
+            }
+        }
+
+        p {
+            color: var(--ink);
+        }
+
+        .stats-header {
+            display: flex;
+            padding: 0px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto 1fr auto;
+            gap: 12px 16px;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .stat-label {
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .stat-track {
+            background: #ebe9e6;
+            border-radius: 999px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            background: #b45a28;
+            border-radius: 999px;
+            height: 100%;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            text-align: right;
+        }
+    }
+}
