@@ -6,7 +6,7 @@ function libraryTemplate(pkm) {
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
             <h3>${pkm.name}</h3>
             <span class="types-wrapper">
-                <p class="type">${pkm.types[0].type.name}</p>
+                <p class="type ${pkm.types[0].type.name}">${pkm.types[0].type.name}</p>
                 ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
             </span>
             </button>
@@ -29,18 +29,59 @@ function returnBtnTemplate() {
 function dialogTemplate(pkm) {
     return /*html*/ `
         <div data-id="overlay-pokemon-name" class="focus-card">
-            <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
-            <h3>${pkm.name}</h3>
-            <img data-id="dialog-image" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
-            <p>Height: ${pkm.height} m</p>
-            <p>Weight: ${pkm.weight} Kg</p>
-            <p>${pkm.types[0].type.name}</p>
-            ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}
-            <p>Attack: ${pkm.att} Pts</p>
+            <div class="dialog-header-wrapper ${pkm.types[0].type.name}">
+                <div class="dialog-img-text">
+                    <div class="dialog-img-wrapper">
+                        <img data-id="dialog-image" class="default-image ${pkm.types[0].type.name}" src="${pkm.img}" alt="Image of ${pkm.name}">
+                    </div>
+                    <div class="dialog-text-wrapper">
+                        <h2>Nr ${pkm.id}</h2>  
+                        <h3>${pkm.name}</h3>
+                        <span class="types-wrapper">
+                            <p class="type ${pkm.types[0].type.name}">${pkm.types[0].type.name}</p>
+                            ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
+                        </span>
+                    </div>
+                </div>
+            <div class="dialog-close-wrapper">
+                <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
+            </div>
+        </div>
+        <div class="dialog-content">
+            <div class="dialog-hw">
+                <div class="dialog-bubble">
+                    <p class="hw-title">Height</p>
+                    <p>${pkm.height} m</p>
+                </div>
+                <div class="dialog-bubble">
+                    <p class="hw-title">Weight</p>
+                    <p>${pkm.weight} Kg</p>
+                </div>
+                <div class="dialog-bubble">
+                    <p class="hw-title">Ability</p>
+                    <p>${pkm.ab}</p>
+                </div>
+            </div class="stats">
+                <div class="stats-header">
+                    <h4>BASE STATS</h4>
+                </div>
+                <div id="stats-grid" class="stats-grid">
+            </div>
+            <!-- <p>Attack: ${pkm.att} Pts</p>
             <p>Defense: ${pkm.def} Pts</p>
-            <p>Health: ${pkm.hp} Pts</p>
+            <p>Health: ${pkm.hp} Pts</p> -->
             <button data-id="next-button" onclick="nextPkm(${pkm.id})">Next</button>
             <button data-id="prev-button" onclick="prevPkm(${pkm.id})">Previous</button>
         </div>
+    `;
+}
+
+function statRowTemplate(label, value, percent) {
+    return /*html*/ `
+        <span class="stat-label">${label}</span>
+        <div class="stat-track">
+            <div class="stat-fill" style="width: ${percent}%"></div>
+        </div>
+        <span class="stat-value">${value}</span>
     `;
 }

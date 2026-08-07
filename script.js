@@ -6,6 +6,7 @@ const SEARCH_CONT_REF = document.getElementById("search-button-container");
 const SEARCH_MSSG = document.getElementById("search-message");
 const DIALOG_REF = document.getElementById("dialog");
 const LOAD_BTN_REF = document.getElementById("load-more-button");
+const STAT_MAX = 150;
 const MY_PKMS = [];
 
 // #region get API Data
@@ -53,6 +54,7 @@ async function addPkmDetails(pkm) {
     pkm.att = pkmDetails.stats[1].base_stat;
     pkm.def = pkmDetails.stats[2].base_stat;
     pkm.hp = pkmDetails.stats[0].base_stat;
+    pkm.ab = pkmDetails.abilities[0].ability.name;
 }
 
 async function loadAddDetails() {
@@ -129,6 +131,7 @@ async function openPkm(id) {
     const pkm = MY_PKMS.find((p) => p.id === id);
     await loadAddDetails();
     showModal(pkm);
+    renderStats(pkm);
     DIALOG_REF.classList.add("open");
     DIALOG_REF.showModal();
 }
@@ -142,6 +145,27 @@ function closeDialog() {
     DIALOG_REF.close();
     DIALOG_REF.classList.remove("open");
     renderPokemons(MY_PKMS);
+}
+
+// grid
+function calcStatPercent(value) {
+    return Math.min((value / STAT_MAX) * 100, 100);
+}
+
+function renderStats(pkm) {
+    const stats = [
+        { label: "HP", value: pkm.hp },
+        { label: "Attack", value: pkm.att },
+        { label: "Defense", value: pkm.def },
+        // { label: "Sp. Atk", value: pkm.spAtt },
+        // { label: "Sp. Def", value: pkm.spDef },
+        // { label: "Speed", value: pkm.speed },
+    ];
+    const StatRef = document.getElementById("stats-grid");
+    for (let i = 0; i < stats.length; i++) {
+        const percent = calcStatPercent(stats[i].value);
+        StatRef.innerHTML += statRowTemplate(stats[i].label, stats[i].value, percent);
+    }
 }
 
 function nextPkm(id) {
