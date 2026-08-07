@@ -1,4 +1,6 @@
 :root {
+    /* #region Pkm colors */
+
     --normal-light: rgb(170, 158, 123);
     --normal-base: rgb(134, 121, 88);
     --fire-light: rgb(237, 121, 64);
@@ -35,4 +37,17 @@
     --steel-base: rgb(95, 127, 149);
     --fairy-light: rgb(222, 115, 189);
     --fairy-base: rgb(181, 77, 152);
+
+    /* #endregion Pkm colors */
+
+    /* #region page colors  */
+
+    --hairline: rgb(224, 222, 216);
+    --surface: white;
+    --canvas: rgb(248, 245, 241);
+    --ink: rgb(28, 31, 39);
+    --ink-muted: rgb(110, 114, 121);
+    --accent: rgb(211, 58, 60);
+
+    /* #endregion page colors */
 }

@@ -37,3 +37,155 @@ body {
         display: none;
     }
 }
+
+/* #region card colors */
+
+.grass {
+    background-color: var(--grass-base);
+}
+
+.fire {
+    background-color: var(--fire-base);
+}
+
+.water {
+    background-color: var(--water-base);
+}
+
+.bug {
+    background-color: var(--bug-base);
+}
+
+.normal {
+    background-color: var(--normal-base);
+}
+
+.poison {
+    background-color: var(--poison-base);
+}
+
+.electric {
+    background-color: var(--electric-base);
+}
+
+.ground {
+    background-color: var(--ground-base);
+}
+
+.fairy {
+    background-color: var(--fairy-base);
+}
+
+.flying {
+    background-color: var(--flying-base);
+}
+
+.steel {
+    background-color: var(--steel-base);
+}
+
+.dark {
+    background-color: var(--dark-base);
+}
+
+.dragon {
+    background-color: var(--dragon-base);
+}
+
+.ghost {
+    background-color: var(--ghost-base);
+}
+
+.rock {
+    background-color: var(--rock-base);
+}
+
+.psychic {
+    background-color: var(--psychic-base);
+}
+
+.fighting {
+    background-color: var(--fighting-base);
+}
+
+.ice {
+    background-color: var(--ice-base);
+}
+
+/* #rendegion card colors */
+
+/* #region card hover colors */
+
+.grass:hover {
+    background-color: var(--grass-light);
+}
+
+.fire:hover {
+    background-color: var(--fire-light);
+}
+
+.water:hover {
+    background-color: var(--water-light);
+}
+
+.bug:hover {
+    background-color: var(--bug-light);
+}
+
+.normal:hover {
+    background-color: var(--normal-light);
+}
+
+.poison:hover {
+    background-color: var(--poison-light);
+}
+
+.electric:hover {
+    background-color: var(--electric-light);
+}
+
+.ground:hover {
+    background-color: var(--ground-light);
+}
+
+.fairy:hover {
+    background-color: var(--fairy-light);
+}
+
+.flying:hover {
+    background-color: var(--flying-light);
+}
+
+.steel:hover {
+    background-color: var(--steel-light);
+}
+
+.dark:hover {
+    background-color: var(--dark-light);
+}
+
+.dragon:hover {
+    background-color: var(--dragon-light);
+}
+
+.ghost:hover {
+    background-color: var(--ghost-light);
+}
+
+.rock:hover {
+    background-color: var(--rock-light);
+}
+
+.psychic:hover {
+    background-color: var(--psychic-light);
+}
+
+.fighting:hover {
+    background-color: var(--fighting-light);
+}
+
+.ice:hover {
+    background-color: var(--ice-light);
+}
+
+/* #region card hover colors */

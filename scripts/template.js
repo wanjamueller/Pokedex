@@ -1,12 +1,14 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
-        <div class="library-cards">
-            <button data-id="card" onclick="openPkm(${pkm.id})">
-            <h2>${pkm.id}</h2>    
-            <h3>${pkm.name}</h3>
+        <div id="library-cards-${pkm.id}" class="library-cards ${pkm.types[0].type.name} ">
+            <button data-id="card${pkm.id}" id="card${pkm.id}" onclick="openPkm(${pkm.id})">
+            <h2>Nr ${pkm.id}</h2>    
             <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
-            <p>${pkm.types[0].type.name}</p>
-            ${pkm.types[1] ? `<p>${pkm.types[1].type.name}</p>` : ""}
+            <h3>${pkm.name}</h3>
+            <span class="types-wrapper">
+                <p class="type">${pkm.types[0].type.name}</p>
+                ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
+            </span>
             </button>
         </div>
     `;

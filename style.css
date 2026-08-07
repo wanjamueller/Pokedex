@@ -3,7 +3,7 @@ main {
     max-width: 1400px;
     margin: 0 auto;
 
-    .library-wrapper {
+    /* .library-wrapper {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
@@ -26,7 +26,7 @@ main {
                 width: 100%;
             }
         }
-    }
+    } */
 
     .card-loader {
         display: flex;
