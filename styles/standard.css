@@ -135,82 +135,136 @@ body {
 
 /* #region card hover colors */
 .library-wrapper {
-    .grass:hover {
+    .library-cards.grass:hover {
         background-color: var(--grass-light);
+        transform: translateY(-6px);
+        border-color: var(--grass-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .fire:hover {
+    .library-cards.fire:hover {
         background-color: var(--fire-light);
+        transform: translateY(-6px);
+        border-color: var(--fire-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .water:hover {
+    .library-cards.water:hover {
         background-color: var(--water-light);
+        transform: translateY(-6px);
+        border-color: var(--water-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .bug:hover {
+    .library-cards.bug:hover {
         background-color: var(--bug-light);
+        transform: translateY(-6px);
+        border-color: var(--bug-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .normal:hover {
+    .library-cards.normal:hover {
         background-color: var(--normal-light);
+        transform: translateY(-6px);
+        border-color: var(--normal-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .poison:hover {
+    .library-cards.poison:hover {
         background-color: var(--poison-light);
+        transform: translateY(-6px);
+        border-color: var(--poison-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .electric:hover {
+    .library-cards.electric:hover {
         background-color: var(--electric-light);
+        transform: translateY(-6px);
+        border-color: var(--electric-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .ground:hover {
+    .library-cards.ground:hover {
         background-color: var(--ground-light);
+        transform: translateY(-6px);
+        border-color: var(--ground-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .fairy:hover {
+    .library-cards.fairy:hover {
         background-color: var(--fairy-light);
+        transform: translateY(-6px);
+        border-color: var(--fairy-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .flying:hover {
+    .library-cards.flying:hover {
         background-color: var(--flying-light);
+        transform: translateY(-6px);
+        border-color: var(--flying-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .steel:hover {
+    .library-cards.steel:hover {
         background-color: var(--steel-light);
+        transform: translateY(-6px);
+        border-color: var(--steel-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .dark:hover {
+    .library-cards.dark:hover {
         background-color: var(--dark-light);
+        transform: translateY(-6px);
+        border-color: var(--dark-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .dragon:hover {
+    .library-cards.dragon:hover {
         background-color: var(--dragon-light);
+        transform: translateY(-6px);
+        border-color: var(--dragon-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .ghost:hover {
+    .library-cards.ghost:hover {
         background-color: var(--ghost-light);
+        transform: translateY(-6px);
+        border-color: var(--ghost-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .rock:hover {
+    .library-cards.rock:hover {
         background-color: var(--rock-light);
+        transform: translateY(-6px);
+        border-color: var(--rock-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .psychic:hover {
+    .library-cards.psychic:hover {
         background-color: var(--psychic-light);
+        transform: translateY(-6px);
+        border-color: var(--psychic-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .fighting:hover {
+    .library-cards.fighting:hover {
         background-color: var(--fighting-light);
+        transform: translateY(-6px);
+        border-color: var(--fighting-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 
-    .ice:hover {
+    .library-cards.ice:hover {
         background-color: var(--ice-light);
+        transform: translateY(-6px);
+        border-color: var(--ice-base);
+        box-shadow: 0 16px 28px -14px var(--ink);
     }
 }
 
-/* #region card hover colors */
+/* #region dialog colors */
 
-.dialog-img-wrapper {
+.dialog-img-text {
     .grass {
         border: 5px solid var(--grass-light);
         border-radius: 50%;
@@ -301,3 +355,153 @@ body {
         border-radius: 50%;
     }
 }
+
+.stat-track {
+    .grass {
+        background-color: var(--grass-base);
+    }
+
+    .fire {
+        background-color: var(--fire-base);
+    }
+
+    .water {
+        background-color: var(--water-base);
+    }
+
+    .bug {
+        background-color: var(--bug-base);
+    }
+
+    .normal {
+        background-color: var(--normal-base);
+    }
+
+    .poison {
+        background-color: var(--poison-base);
+    }
+
+    .electric {
+        background-color: var(--electric-base);
+    }
+
+    .ground {
+        background-color: var(--ground-base);
+    }
+
+    .fairy {
+        background-color: var(--fairy-base);
+    }
+
+    .flying {
+        background-color: var(--flying-base);
+    }
+
+    .steel {
+        background-color: var(--steel-base);
+    }
+
+    .dark {
+        background-color: var(--dark-base);
+    }
+
+    .dragon {
+        background-color: var(--dragon-base);
+    }
+
+    .ghost {
+        background-color: var(--ghost-base);
+    }
+
+    .rock {
+        background-color: var(--rock-base);
+    }
+
+    .psychic {
+        background-color: var(--psychic-base);
+    }
+
+    .fighting {
+        background-color: var(--fighting-base);
+    }
+
+    .ice {
+        background-color: var(--ice-base);
+    }
+}
+
+.shuffle {
+    .grass:hover {
+        background-color: var(--grass-light);
+    }
+
+    .fire:hover {
+        background-color: var(--fire-light);
+    }
+
+    .water:hover {
+        background-color: var(--water-light);
+    }
+
+    .bug {
+        background-color: var(--bug-light);
+    }
+
+    .normal:hover {
+        background-color: var(--normal-light);
+    }
+
+    .poison:hover {
+        background-color: var(--poison-light);
+    }
+
+    .electric:hover {
+        background-color: var(--electric-light);
+    }
+
+    .ground:hover {
+        background-color: var(--ground-light);
+    }
+
+    .fairy:hover {
+        background-color: var(--fairy-light);
+    }
+
+    .flying:hover {
+        background-color: var(--flying-light);
+    }
+
+    .steel:hover {
+        background-color: var(--steel-light);
+    }
+
+    .dark:hover {
+        background-color: var(--dark-light);
+    }
+
+    .dragon:hover {
+        background-color: var(--dragon-light);
+    }
+
+    .ghost:hover {
+        background-color: var(--ghost-light);
+    }
+
+    .rock:hover {
+        background-color: var(--rock-light);
+    }
+
+    .psychic:hover {
+        background-color: var(--psychic-light);
+    }
+
+    .fighting:hover {
+        background-color: var(--fighting-light);
+    }
+
+    .ice:hover {
+        background-color: var(--ice-light);
+    }
+}
+
+/* #endregion dialog colors */

@@ -55,6 +55,9 @@ async function addPkmDetails(pkm) {
     pkm.def = pkmDetails.stats[2].base_stat;
     pkm.hp = pkmDetails.stats[0].base_stat;
     pkm.ab = pkmDetails.abilities[0].ability.name;
+    pkm.spAtt = pkmDetails.stats[3].base_stat;
+    pkm.spDef = pkmDetails.stats[4].base_stat;
+    pkm.speed = pkmDetails.stats[5].base_stat;
 }
 
 async function loadAddDetails() {
@@ -70,18 +73,13 @@ async function loadAddDetails() {
 
 function renderPokemons(pokemons) {
     LIBRARY_REF.innerHTML = "";
+
     for (let index = 0; index < pokemons.length; index++) {
         const pkm = pokemons[index];
         LIBRARY_REF.innerHTML += libraryTemplate(pkm);
     }
+    // setCardBackground();
     renderSearchBtn();
-    setCardBackground();
-}
-
-function setCardBackground() {
-    const libCardRef = document.getElementById(`library-cards-${pkm.id}`);
-    const typeColor = MY_PKM.types[0].type.name;
-    libCardRef.classList.add(typeColor);
 }
 
 // #region search functionality
@@ -131,7 +129,7 @@ async function openPkm(id) {
     const pkm = MY_PKMS.find((p) => p.id === id);
     await loadAddDetails();
     showModal(pkm);
-    renderStats(pkm);
+    // await showPkmInDialog(id);
     DIALOG_REF.classList.add("open");
     DIALOG_REF.showModal();
 }
@@ -157,27 +155,44 @@ function renderStats(pkm) {
         { label: "HP", value: pkm.hp },
         { label: "Attack", value: pkm.att },
         { label: "Defense", value: pkm.def },
-        // { label: "Sp. Atk", value: pkm.spAtt },
-        // { label: "Sp. Def", value: pkm.spDef },
-        // { label: "Speed", value: pkm.speed },
+        { label: "Sp. Atk", value: pkm.spAtt },
+        { label: "Sp. Def", value: pkm.spDef },
+        { label: "Speed", value: pkm.speed },
     ];
-    const StatRef = document.getElementById("stats-grid");
+    let statsHtml = "";
     for (let i = 0; i < stats.length; i++) {
         const percent = calcStatPercent(stats[i].value);
-        StatRef.innerHTML += statRowTemplate(stats[i].label, stats[i].value, percent);
+        statsHtml += statRowTemplate(stats[i].label, stats[i].value, percent, pkm);
     }
+    return statsHtml;
 }
 
-function nextPkm(id) {
-    const pkm = MY_PKMS.find((p) => p.id === id + 1);
-    if (pkm.id == MY_PKMS.length + 1) pkm.id = 1;
-    return showModal(pkm);
+// function nextPkm(id) {
+//     const pkm = MY_PKMS.find((p) => p.id === id + 1);
+//     if (pkm.id == MY_PKMS.length + 1) pkm.id = 1;
+//     return showModal(pkm);
+// }
+
+// function prevPkm(id) {
+//     const pkm = MY_PKMS.find((p) => p.id === id - 1);
+//     if (pkm.id === 1) pkm.id = MY_PKMS.length + 1;
+//     return showModal(pkm);
+// }
+
+async function nextPkm(id) {
+    const nextId = id === MY_PKMS.length ? 1 : id + 1;
+    await showPkmInDialog(nextId);
 }
 
-function prevPkm(id) {
-    const pkm = MY_PKMS.find((p) => p.id === id - 1);
-    if (pkm.id === 1) pkm.id = MY_PKMS.length + 1;
-    return showModal(pkm);
+async function prevPkm(id) {
+    const prevId = id === 1 ? MY_PKMS.length : id - 1;
+    await showPkmInDialog(prevId);
+}
+
+async function showPkmInDialog(id) {
+    const pkm = MY_PKMS.find((p) => p.id === id);
+    if (!pkm.height) await addPkmDetails(pkm);
+    showModal(pkm);
 }
 
 // #endregion dialog
