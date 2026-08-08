@@ -132,6 +132,7 @@ async function openPkm(id) {
     // await showPkmInDialog(id);
     DIALOG_REF.classList.add("open");
     DIALOG_REF.showModal();
+    document.body.classList.add("no-scroll");
 }
 
 function showModal(pkm) {
@@ -143,6 +144,7 @@ function closeDialog() {
     DIALOG_REF.close();
     DIALOG_REF.classList.remove("open");
     renderPokemons(MY_PKMS);
+    document.body.classList.remove("no-scroll");
 }
 
 // grid
@@ -195,10 +197,25 @@ async function showPkmInDialog(id) {
     showModal(pkm);
 }
 
+function eventListeners() {
+    DIALOG_REF.addEventListener("click", (event) => {
+        if (event.target === DIALOG_REF) {
+            closeDialog();
+        }
+    });
+
+    DIALOG_REF.addEventListener("keydown", (esc) => {
+        if (esc.key === "Escape") {
+            closeDialog();
+        }
+    });
+}
+
 // #endregion dialog
 
 // #endregion Render Pokemons
 
 function init() {
     getPkm();
+    eventListeners();
 }

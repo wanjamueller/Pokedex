@@ -32,5 +32,16 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        button {
+            width: 200px;
+            border-radius: 20px;
+            background: rgb(245, 243, 239);
+            border: 1px solid var(--ink);
+            padding: 3px 6px;
+            font-family: "Outfit";
+            font-size: 1.25rem;
+            color: rgb(28, 31, 39);
+        }
     }
 }
