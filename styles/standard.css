@@ -6,6 +6,11 @@
     position: relative;
 }
 
+body.no-scroll {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+}
+
 body {
     background: rgb(248, 245, 241);
     font-family: "DM Sans";
