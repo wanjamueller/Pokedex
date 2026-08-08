@@ -31,8 +31,8 @@ function dialogTemplate(pkm) {
         <div data-id="overlay-pokemon-name" class="focus-card">
             <div class="dialog-header-wrapper ${pkm.types[0].type.name}">
                 <div class="dialog-img-text">
-                    <div class="dialog-img-wrapper">
-                        <img data-id="dialog-image" class="default-image ${pkm.types[0].type.name}" src="${pkm.img}" alt="Image of ${pkm.name}">
+                    <div class="dialog-img-wrapper ${pkm.types[0].type.name}">
+                        <img data-id="dialog-image" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
                     </div>
                     <div class="dialog-text-wrapper">
                         <h2>Nr ${pkm.id}</h2>  
@@ -44,7 +44,7 @@ function dialogTemplate(pkm) {
                     </div>
                 </div>
             <div class="dialog-close-wrapper">
-                <button data-id="close-dialog-button" onclick="closeDialog()">X</button>
+                <button data-id="close-dialog-button" class="${pkm.types[0].type.name}" onclick="closeDialog()"><img src="./assets/icons/close.png" alt=""></button>
             </div>
         </div>
         <div class="dialog-content">
@@ -62,25 +62,25 @@ function dialogTemplate(pkm) {
                     <p>${pkm.ab}</p>
                 </div>
             </div class="stats">
-                <div class="stats-header">
-                    <h4>BASE STATS</h4>
-                </div>
-                <div id="stats-grid" class="stats-grid">
+            <div class="stats-header">
+                <h4>BASE STATS</h4>
             </div>
-            <!-- <p>Attack: ${pkm.att} Pts</p>
-            <p>Defense: ${pkm.def} Pts</p>
-            <p>Health: ${pkm.hp} Pts</p> -->
-            <button data-id="next-button" onclick="nextPkm(${pkm.id})">Next</button>
-            <button data-id="prev-button" onclick="prevPkm(${pkm.id})">Previous</button>
+            <div id="stats-grid" class="stats-grid">
+                ${renderStats(pkm)}
+            </div>
+            <div class="shuffle">
+                <button data-id="prev-button" class="${pkm.types[0].type.name}" onclick="prevPkm(${pkm.id})">Previous</button>
+                <button data-id="next-button" class="${pkm.types[0].type.name}" onclick="nextPkm(${pkm.id})">Next</button>
+            </div>
         </div>
     `;
 }
 
-function statRowTemplate(label, value, percent) {
+function statRowTemplate(label, value, percent, pkm) {
     return /*html*/ `
         <span class="stat-label">${label}</span>
         <div class="stat-track">
-            <div class="stat-fill" style="width: ${percent}%"></div>
+            <div class="stat-fill ${pkm.types[0].type.name}" style="width: ${percent}%"></div>
         </div>
         <span class="stat-value">${value}</span>
     `;
