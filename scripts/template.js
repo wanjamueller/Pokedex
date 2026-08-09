@@ -69,8 +69,8 @@ function dialogTemplate(pkm) {
                 ${renderStats(pkm)}
             </div>
             <div class="shuffle">
-                <button data-id="prev-button" class="${pkm.types[0].type.name}" onclick="prevPkm(${pkm.id})">Previous</button>
-                <button data-id="next-button" class="${pkm.types[0].type.name}" onclick="nextPkm(${pkm.id})">Next</button>
+                <button data-id="prev-button" class="${pkm.types[0].type.name}" onclick="prevPkm(${pkm.id})"><img src="./assets/icons/prev.svg" alt="previous-button"></button>
+                <button data-id="next-button" class="${pkm.types[0].type.name}" onclick="nextPkm(${pkm.id})"><img src="./assets/icons/next.svg" alt="next-button"></button>
             </div>
         </div>
     `;
