@@ -154,12 +154,12 @@ function calcStatPercent(value) {
 
 function renderStats(pkm) {
     const stats = [
-        { label: "HP", value: pkm.hp },
+        { label: "Health", value: pkm.hp },
+        { label: "Speed", value: pkm.speed },
         { label: "Attack", value: pkm.att },
         { label: "Defense", value: pkm.def },
-        { label: "Sp. Atk", value: pkm.spAtt },
+        { label: "Sp. Att", value: pkm.spAtt },
         { label: "Sp. Def", value: pkm.spDef },
-        { label: "Speed", value: pkm.speed },
     ];
     let statsHtml = "";
     for (let i = 0; i < stats.length; i++) {
