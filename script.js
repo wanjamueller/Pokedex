@@ -50,7 +50,6 @@ async function getMorePkm() {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
     await loadDetails();
-    // LOAD_BTN_REF.classList.remove("d_none");
     hideLoader();
 }
 
@@ -62,7 +61,6 @@ async function addPkmDetails(pkm) {
     pkm.att = pkmDetails.stats[1].base_stat;
     pkm.def = pkmDetails.stats[2].base_stat;
     pkm.hp = pkmDetails.stats[0].base_stat;
-    // pkm.ab = pkmDetails.abilities[0].ability.name;
     pkm.ab = pkmDetails.abilities;
     pkm.spAtt = pkmDetails.stats[3].base_stat;
     pkm.spDef = pkmDetails.stats[4].base_stat;
