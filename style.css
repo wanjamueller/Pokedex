@@ -27,6 +27,15 @@ main {
             }
         }
     } */
+    .loader {
+        width: 48px;
+        height: 48px;
+        margin: 40px auto;
+        border: 5px solid #e0e0e0;
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
 
     .card-loader {
         display: flex;
@@ -43,5 +52,17 @@ main {
             font-size: 1.25rem;
             color: rgb(28, 31, 39);
         }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader {
+        animation-duration: 2s;
     }
 }
