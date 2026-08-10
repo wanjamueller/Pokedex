@@ -16,11 +16,14 @@
 
         a {
             display: flex;
-            font-family: "Outfit";
-            font-weight: 600;
-            font-size: 1.5rem;
             gap: 12px;
-            color: black;
+
+            h1 {
+                font-family: "Outfit";
+                font-weight: 600;
+                font-size: 1.5rem;
+                color: black;
+            }
         }
 
         .search {

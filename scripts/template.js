@@ -1,14 +1,14 @@
 function libraryTemplate(pkm) {
     return /*html*/ `
         <div id="library-cards-${pkm.id}" class="library-cards ${pkm.types[0].type.name} ">
-            <button data-id="card${pkm.id}" id="card${pkm.id}" onclick="openPkm(${pkm.id})">
-            <h2>Nr ${pkm.id}</h2>    
-            <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
-            <h3>${pkm.name}</h3>
-            <span class="types-wrapper">
-                <p class="type ${pkm.types[0].type.name}">${pkm.types[0].type.name}</p>
-                ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
-            </span>
+            <button aria-haspopup="dialog" data-id="card${pkm.id}" id="card${pkm.id}" onclick="openPkm(${pkm.id})">
+                <h2>Nr ${pkm.id}</h2>    
+                <img data-id="card-image${pkm.id}" class="default-image" src="${pkm.img}" alt="Image of ${pkm.name}">
+                <h3>${pkm.name}</h3>
+                <span class="types-wrapper">
+                    <p class="type ${pkm.types[0].type.name}">${pkm.types[0].type.name}</p>
+                    ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
+                </span>
             </button>
         </div>
     `;
@@ -36,32 +36,38 @@ function dialogTemplate(pkm) {
                     </div>
                     <div class="dialog-text-wrapper">
                         <h2>Nr ${pkm.id}</h2>  
-                        <h3>${pkm.name}</h3>
+                        <h3 class="name">${pkm.name}</h3>
                         <span class="types-wrapper">
                             <p class="type ${pkm.types[0].type.name}">${pkm.types[0].type.name}</p>
                             ${pkm.types[1] ? `<p class="type ${pkm.types[1].type.name}">${pkm.types[1].type.name}</p>` : ""}
                         </span>
                     </div>
                 </div>
-            <div class="dialog-close-wrapper">
-                <button data-id="close-dialog-button" class="${pkm.types[0].type.name}" onclick="closeDialog()"><img src="./assets/icons/close.png" alt=""></button>
+                <div class="dialog-close-wrapper">
+                    <button data-id="close-dialog-button" class="${pkm.types[0].type.name}" onclick="closeDialog()"><img src="./assets/icons/close.png" alt=""></button>
+                </div>
             </div>
-        </div>
-        <div class="dialog-content">
-            <div class="dialog-hw">
-                <div class="dialog-bubble">
-                    <p class="hw-title">Height</p>
-                    <p>${pkm.height} m</p>
-                </div>
-                <div class="dialog-bubble">
-                    <p class="hw-title">Weight</p>
-                    <p>${pkm.weight} Kg</p>
-                </div>
-                <div class="dialog-bubble">
-                    <p class="hw-title">Ability</p>
-                    <p>${pkm.ab}</p>
-                </div>
-            </div class="stats">
+            <div class="dialog-content">
+                <div class="dialog-hw">
+                    <div class="wrapper-hw">
+                        <div class="dialog-bubble">
+                            <p class="hw-title">Height</p>
+                            <p class="height">${pkm.height} m</p>
+                        </div>
+                        <div class="dialog-bubble">
+                            <p class="hw-title">Weight</p>
+                            <p>${pkm.weight} Kg</p>
+                        </div>
+                    </div>    
+                    <div class="dialog-bubble-ability">
+                        <p class="ab-title">Ability</p>
+                        <div class="abilities">
+                            <p>${pkm.ab[0].ability.name} </p>
+                            ${pkm.ab[1] ? `<p>&nbsp;& ${pkm.ab[1].ability.name}</p>` : ""}
+                        </div>
+                    </div>
+                </div>    
+            <div class="stats">
             <div class="stats-header">
                 <h4>BASE STATS</h4>
             </div>

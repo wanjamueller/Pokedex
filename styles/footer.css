@@ -1,0 +1,26 @@
+.site-footer {
+    height: 95px;
+    background: white;
+    border-top: 1px solid rgb(223, 219, 212);
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 20px 28px;
+        display: flex;
+        justify-content: space-around;
+        gap: 50px;
+        align-items: center;
+        font-size: 1rem;
+
+        p {
+            color: var(--ink);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--ink);
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.header-content {
+    padding-top: 7px;
+}
+
+.imprint-content {
+    padding: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    h3,
+    h4,
+    p {
+        color: var(--ink);
+    }
+
+    h1 {
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 150%;
+    }
+
+    h2 {
+        color: var(--ink);
+    }
+
+    .imprint {
+        .section-author {
+            .author {
+                padding: 40px;
+                gap: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                img {
+                    width: 200px;
+                }
+
+                .name {
+                    text-align: center;
+                    gap: 20px;
+                }
+            }
+        }
+
+        .imprint-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 150%;
+            gap: 20px;
+            text-align: center;
+        }
+    }
+}
