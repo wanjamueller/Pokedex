@@ -1,5 +1,12 @@
 .header-content {
     padding-top: 7px;
+
+    .pokedex {
+        font-family: "Outfit";
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: black;
+    }
 }
 
 .imprint-content {
