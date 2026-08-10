@@ -6,14 +6,13 @@
         <title>Pokedex</title>
 
         <link rel="shortcut icon" href="./assets/icons/pokedex-mark.svg" type="image/x-icon" />
-
         <link rel="stylesheet" href="./styles/cards.css" />
-
         <link rel="stylesheet" href="./styles/standard.css" />
         <link rel="stylesheet" href="./styles/fonts.css" />
         <link rel="stylesheet" href="./styles/variables.css" />
         <link rel="stylesheet" href="./styles/dialog.css" />
         <link rel="stylesheet" href="./styles/header.css" />
+        <link rel="stylesheet" href="./styles/footer.css" />
         <link rel="stylesheet" href="style.css" />
 
         <script defer src="./scripts/template.js"></script>
@@ -23,12 +22,11 @@
         <header class="site-header">
             <div class="header-content">
                 <a href="#"
-                    ><img src="./assets/icons/pokedex-mark.svg" alt="pokedex-logo" /><span class="pokedex"
-                        >Pokédex</span
-                    ></a
+                    ><img src="./assets/icons/pokedex-mark.svg" alt="pokedex-logo" />
+                    <h1 class="pokedex">Pokédex</h1></a
                 >
                 <section id="search" class="search">
-                    <label for="search-input" class="field">
+                    <label aria-labelledby="search-input" for="search-input" class="field">
                         <span class="field-icon"></span>
                         <input data-id="search-input" id="search-input" type="text" placeholder="by name" />
                         <div id="search-button-container"></div>
@@ -47,6 +45,11 @@
             </section>
         </main>
         <dialog data-id="dialog" id="dialog" class="dialog"></dialog>
-        <footer></footer>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>© 2026 Wanja Müller</p>
+                <a href="./pages/imprint.html">Imprint</a>
+            </div>
+        </footer>
     </body>
 </html>

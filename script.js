@@ -8,6 +8,7 @@ const DIALOG_REF = document.getElementById("dialog");
 const LOAD_BTN_REF = document.getElementById("load-more-button");
 const STAT_MAX = 150;
 const MY_PKMS = [];
+let SEARCH_LIST = MY_PKMS;
 
 // #region get API Data
 
@@ -37,6 +38,7 @@ async function loadDetails() {
         await getPkmDetails(pkm);
     }
     renderPokemons(MY_PKMS);
+    renderSearchBtn();
 }
 
 async function getMorePkm() {
@@ -60,7 +62,8 @@ async function addPkmDetails(pkm) {
     pkm.att = pkmDetails.stats[1].base_stat;
     pkm.def = pkmDetails.stats[2].base_stat;
     pkm.hp = pkmDetails.stats[0].base_stat;
-    pkm.ab = pkmDetails.abilities[0].ability.name;
+    // pkm.ab = pkmDetails.abilities[0].ability.name;
+    pkm.ab = pkmDetails.abilities;
     pkm.spAtt = pkmDetails.stats[3].base_stat;
     pkm.spDef = pkmDetails.stats[4].base_stat;
     pkm.speed = pkmDetails.stats[5].base_stat;
@@ -93,15 +96,15 @@ function hideLoader() {
 }
 
 function renderPokemons(pokemons) {
+    SEARCH_LIST = pokemons;
     LIBRARY_REF.innerHTML = "";
-
     for (let index = 0; index < pokemons.length; index++) {
         const pkm = pokemons[index];
         LIBRARY_REF.innerHTML += libraryTemplate(pkm);
     }
-    // setCardBackground();
-    renderSearchBtn();
 }
+
+// #endregion Render Pokemons
 
 // #region search functionality
 
@@ -118,17 +121,17 @@ function searchPkm() {
 function searchFlow(results, query) {
     if (query.length < 3) {
         SEARCH_MSSG.innerText = "minimum 3 letter necessary";
-        setTimeout(() => (SEARCH_MSSG.innerText = ""), 3000);
+        LIBRARY_REF.classList.add("d_none");
     } else {
         if (results.length === 0) {
             SEARCH_MSSG.innerText = `no pokemon found for "${query}"`;
+            LIBRARY_REF.classList.add("d_none");
         } else {
             renderPokemons(results);
-            SEARCH_MSSG.innerText = "";
         }
-        LOAD_BTN_REF.classList.add("d_none");
-        toggleSearchButton();
     }
+    LOAD_BTN_REF.classList.add("d_none");
+    toggleSearchButton();
 }
 
 function toggleSearchButton() {
@@ -138,7 +141,9 @@ function toggleSearchButton() {
 function returnToLibrary() {
     SEARCH_INPUT.value = "";
     SEARCH_MSSG.innerText = "";
+    LIBRARY_REF.classList.remove("d_none");
     renderPokemons(MY_PKMS);
+    renderSearchBtn();
     document.getElementById("load-more-button").classList.remove("d_none");
 }
 
@@ -150,7 +155,6 @@ async function openPkm(id) {
     const pkm = MY_PKMS.find((p) => p.id === id);
     await loadAddDetails();
     showModal(pkm);
-    // await showPkmInDialog(id);
     DIALOG_REF.classList.add("open");
     DIALOG_REF.showModal();
     document.body.classList.add("no-scroll");
@@ -164,11 +168,43 @@ function showModal(pkm) {
 function closeDialog() {
     DIALOG_REF.close();
     DIALOG_REF.classList.remove("open");
-    renderPokemons(MY_PKMS);
     document.body.classList.remove("no-scroll");
 }
 
-// grid
+async function nextPkm(id) {
+    const index = SEARCH_LIST.findIndex((p) => p.id === id);
+    const nextIndex = (index + 1) % SEARCH_LIST.length;
+    await showPkmInDialog(SEARCH_LIST[nextIndex].id);
+}
+
+async function prevPkm(id) {
+    const index = SEARCH_LIST.findIndex((p) => p.id === id);
+    const prevIndex = (index - 1 + SEARCH_LIST.length) % SEARCH_LIST.length;
+    await showPkmInDialog(SEARCH_LIST[prevIndex].id);
+}
+
+async function showPkmInDialog(id) {
+    const pkm = SEARCH_LIST.find((p) => p.id === id);
+    if (!pkm.height) await addPkmDetails(pkm);
+    showModal(pkm);
+}
+
+function eventListeners() {
+    DIALOG_REF.addEventListener("click", (event) => {
+        if (event.target === DIALOG_REF) {
+            closeDialog();
+        }
+    });
+
+    DIALOG_REF.addEventListener("keydown", (esc) => {
+        if (esc.key === "Escape") {
+            closeDialog();
+        }
+    });
+}
+
+//  Stat grid
+
 function calcStatPercent(value) {
     return Math.min((value / STAT_MAX) * 100, 100);
 }
@@ -190,51 +226,7 @@ function renderStats(pkm) {
     return statsHtml;
 }
 
-// function nextPkm(id) {
-//     const pkm = MY_PKMS.find((p) => p.id === id + 1);
-//     if (pkm.id == MY_PKMS.length + 1) pkm.id = 1;
-//     return showModal(pkm);
-// }
-
-// function prevPkm(id) {
-//     const pkm = MY_PKMS.find((p) => p.id === id - 1);
-//     if (pkm.id === 1) pkm.id = MY_PKMS.length + 1;
-//     return showModal(pkm);
-// }
-
-async function nextPkm(id) {
-    const nextId = id === MY_PKMS.length ? 1 : id + 1;
-    await showPkmInDialog(nextId);
-}
-
-async function prevPkm(id) {
-    const prevId = id === 1 ? MY_PKMS.length : id - 1;
-    await showPkmInDialog(prevId);
-}
-
-async function showPkmInDialog(id) {
-    const pkm = MY_PKMS.find((p) => p.id === id);
-    if (!pkm.height) await addPkmDetails(pkm);
-    showModal(pkm);
-}
-
-function eventListeners() {
-    DIALOG_REF.addEventListener("click", (event) => {
-        if (event.target === DIALOG_REF) {
-            closeDialog();
-        }
-    });
-
-    DIALOG_REF.addEventListener("keydown", (esc) => {
-        if (esc.key === "Escape") {
-            closeDialog();
-        }
-    });
-}
-
 // #endregion dialog
-
-// #endregion Render Pokemons
 
 function init() {
     getPkm();
