@@ -56,41 +56,6 @@ async function showPkmInDialog(id) {
 const nextIndex = (index + 1) % SEARCH_LIST.length;
 ```
 
----
-
-## What I learned
-
-**Async sequencing is the hard part.** Getting the loading chain right — fetch list, enrich each entry, then render — took real debugging. An early version had a worker function calling its own orchestrator, which produced an infinite loop of API requests. Lesson: one function per job, and dependencies point in one direction.
-
-**Template functions can't touch the DOM.** Calling `getElementById` from inside a template string fails, because the element it's looking for is still just characters in a half-built string. Templates return markup; the DOM comes after.
-
-**Nested CSS raises the bar for every override.** A rule nested three levels deep needs equal specificity to override — and media queries add no weight of their own. Restructuring responsive rules to sit alongside what they modify solved a class of bugs that looked like the media query "not working".
-
-**Small architectural choices compound.** `position: relative` on a universal selector seemed harmless until it interacted with scroll locking and a `<dialog>` in the top layer. Broad resets have a long reach.
-
----
-
-## Roadmap
-
-- [ ] Shiny sprite toggle in the detail view (data already fetched)
-- [ ] Filter by type alongside name search
-- [ ] Debounced live search instead of button-triggered
-- [ ] Keyboard navigation for dialog paging
-- [ ] Cache responses in `localStorage` to cut repeat API calls
-
----
-
-## Running locally
-
-```bash
-git clone https://github.com/<username>/pokedex.git
-cd pokedex
-```
-
-Open `index.html` in a browser, or serve it with any static server.
-
----
-
 ## About
 
 Built during my fullstack development training as I move from a decade in operations and customer care leadership into engineering. Constraints were deliberate: no classes, no `Promise.all`, no libraries — the curriculum's scope at this stage, and a useful one for learning what the language actually does.
