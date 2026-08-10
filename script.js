@@ -12,6 +12,7 @@ const MY_PKMS = [];
 // #region get API Data
 
 async function getPkm() {
+    showLoader();
     const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=40&offset=0`);
     const PkmsFromJSON = await Pkms.json();
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
@@ -19,6 +20,7 @@ async function getPkm() {
     }
     await loadDetails();
     LOAD_BTN_REF.classList.remove("d_none");
+    hideLoader();
 }
 
 async function getPkmDetails(pkm) {
@@ -38,12 +40,16 @@ async function loadDetails() {
 }
 
 async function getMorePkm() {
+    showLoader();
+    LOAD_BTN_REF.classList.add("d_none");
     const Pkms = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${MY_PKMS.length}`);
     const PkmsFromJSON = await Pkms.json();
     for (let i = 0; i < PkmsFromJSON.results.length; i++) {
         MY_PKMS.push(PkmsFromJSON.results[i]);
     }
     await loadDetails();
+    // LOAD_BTN_REF.classList.remove("d_none");
+    hideLoader();
 }
 
 async function addPkmDetails(pkm) {
@@ -70,6 +76,21 @@ async function loadAddDetails() {
 // #endregion get API Data
 
 // #region Render Pokemons
+
+function toggleLoader(show) {
+    const loader = document.getElementById("loader");
+    loader.classList.toggle("d_none", show === false);
+}
+
+function showLoader() {
+    document.getElementById("loader").classList.remove("d_none");
+    LOAD_BTN_REF.classList.add("d_none");
+}
+
+function hideLoader() {
+    document.getElementById("loader").classList.add("d_none");
+    LOAD_BTN_REF.classList.remove("d_none");
+}
 
 function renderPokemons(pokemons) {
     LIBRARY_REF.innerHTML = "";
