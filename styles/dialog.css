@@ -164,9 +164,6 @@
                 color: white;
                 padding: 5px;
                 border-radius: 50%;
-                font-family: "DM Sans";
-                font-size: 1rem;
-                font-weight: 500;
 
                 img {
                     width: 50px;
@@ -183,13 +180,13 @@ dialog::backdrop {
 
 @media screen and (max-width: 699px) {
     .dialog.open {
-        width: 100%;
-        display: flex;
+        width: 90%;
+        /* display: flex;
         position: fixed;
-        bottom: 0px;
-        margin: 0;
-        top: auto;
-        border-radius: 20px 20px 0px 0px;
+        bottom: 0px; */
+        /* margin: auto; */
+        /* top: auto; */
+        /* border-radius: 20px 20px 0px 0px; */
     }
 
     .dialog .focus-card {
@@ -197,24 +194,24 @@ dialog::backdrop {
     }
 
     .dialog .dialog-header-wrapper {
-        flex-direction: column-reverse;
-        align-items: center;
+        /* flex-direction: column-reverse;
+        align-items: center; */
     }
 
     .dialog .dialog-header-wrapper .dialog-close-wrapper {
         display: flex;
         justify-content: flex-end;
+        align-items: start;
         width: 100%;
     }
 
     .dialog .dialog-img-text {
-        flex-direction: column;
+        /* flex-direction: column; */
         width: 100%;
         align-items: center;
     }
 
     .dialog .dialog-img-text .dialog-text-wrapper {
-        align-items: center;
         gap: 10px;
     }
 
@@ -232,22 +229,55 @@ dialog::backdrop {
     }
 
     .dialog .dialog-content .stats-grid {
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto 1fr auto auto 1fr auto;
     }
 }
 
 @media screen and (max-width: 450px) {
+    dialog.open {
+        width: 100%;
+    }
+
+    .dialog .dialog-header-wrapper {
+        padding: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
     .dialog .dialog-header-wrapper .dialog-img-text .dialog-img-wrapper {
         width: 150px;
         aspect-ratio: 1;
         padding: 12px;
     }
 
-    dialog .dialog-header-wrapper .dialog-img-text .dialog-text-wrapper {
+    .dialog .dialog-header-wrapper .dialog-img-text .dialog-text-wrapper {
+        gap: 15px;
+        padding: 5px;
+        align-items: center;
+    }
+
+    .dialog .dialog-header-wrapper .dialog-img-text .dialog-text-wrapper .types-wrapper {
         gap: 5px;
     }
 
     .dialog .dialog-header-wrapper .dialog-img-text .dialog-text-wrapper .name {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .dialog .dialog-content .stats-grid {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .dialog .dialog-content .stats .shuffle {
+        padding: 10px;
+
+        button {
+            padding: 3px;
+
+            img {
+                width: 30px;
+                align-self: center;
+            }
+        }
     }
 }

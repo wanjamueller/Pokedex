@@ -71,7 +71,6 @@ async function loadAddDetails() {
     for (const pkm of MY_PKMS) {
         await addPkmDetails(pkm);
     }
-    console.log(MY_PKMS);
 }
 
 // #endregion get API Data
