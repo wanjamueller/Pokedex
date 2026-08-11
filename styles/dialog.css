@@ -181,12 +181,6 @@ dialog::backdrop {
 @media screen and (max-width: 699px) {
     .dialog.open {
         width: 90%;
-        /* display: flex;
-        position: fixed;
-        bottom: 0px; */
-        /* margin: auto; */
-        /* top: auto; */
-        /* border-radius: 20px 20px 0px 0px; */
     }
 
     .dialog .focus-card {
@@ -194,8 +188,6 @@ dialog::backdrop {
     }
 
     .dialog .dialog-header-wrapper {
-        /* flex-direction: column-reverse;
-        align-items: center; */
     }
 
     .dialog .dialog-header-wrapper .dialog-close-wrapper {
@@ -206,7 +198,6 @@ dialog::backdrop {
     }
 
     .dialog .dialog-img-text {
-        /* flex-direction: column; */
         width: 100%;
         align-items: center;
     }
