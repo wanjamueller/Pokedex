@@ -187,9 +187,6 @@ dialog::backdrop {
         width: 100%;
     }
 
-    .dialog .dialog-header-wrapper {
-    }
-
     .dialog .dialog-header-wrapper .dialog-close-wrapper {
         display: flex;
         justify-content: flex-end;
